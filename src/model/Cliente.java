@@ -7,7 +7,9 @@ public class Cliente {
 
         private String nome; 
         private String cpf; 
-        private List<Conta> contas = new ArrayList<>();
+        public Conta conta;
+        
+        private List<Cliente> contas = new ArrayList<>();
 
         public Cliente() {
         }
@@ -32,14 +34,6 @@ public class Cliente {
 		public void setCpf(String cpf) {
 			this.cpf = cpf;
 		}
-
-		public List<Conta> getContas() {
-			return contas;
-		}
-
-		public void setContas(List<Conta> contas) {
-			this.contas = contas;
-		}   
         
 	}
 

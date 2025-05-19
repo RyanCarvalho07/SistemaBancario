@@ -1,21 +1,24 @@
 package model;
 
-public abstract class Conta {
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public  abstract class Conta {
 
 	private Integer numero;
 	protected Double saldo;
-	private String titular;
-	private Integer histTransação;
+	private Cliente titular;
+
+	private List<Transacao> historico = new ArrayList<>();;
 
 	public Conta() {
 	}
 
-	public Conta(Integer numero, Double saldo, String titular, Integer histTransação) {
-		super();
+	public Conta(Integer numero, Cliente titular) {
 		this.numero = numero;
-		this.saldo = saldo;
+		this.saldo = 0.0;
 		this.titular = titular;
-		this.histTransação = histTransação;
 	}
 
 	public Integer getNumero() {
@@ -34,26 +37,26 @@ public abstract class Conta {
 		this.saldo = saldo;
 	}
 
-	public String getTitular() {
+	public Cliente getTitular() {
 		return titular;
 	}
 
-	public void setTitular(String titular) {
-		this.titular = titular;
+	public List<Transacao> getHistorico() {
+		return historico;
 	}
 
-	public Integer getHistTransação() {
-		return histTransação;
+	protected void atualizarSaldo(double valor) {
+		this.saldo += valor;
 	}
 
-	public void setHistTransação(Integer histTransação) {
-		this.histTransação = histTransação;
+	protected void registrarTransacao(double valor, TipoTransacao tipo, Conta destino) {
+		historico.add(new Transacao(LocalDateTime.now(), tipo, valor, this, destino));
 	}
 
-	public abstract void sacar();
+	public abstract void sacar(double valor);
 
-	public abstract void depositar();
+	public abstract void depositar(double valor);
 
-	public abstract void transferir();
+	public abstract void transferir(double valor, Conta destino);
 
 }
