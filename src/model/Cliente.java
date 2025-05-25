@@ -7,13 +7,9 @@ public class Cliente {
 
         private String nome; 
         private String cpf; 
-        public Conta conta;
+        private List<Conta> contas = new ArrayList<>();
+       
         
-        private List<Cliente> contas = new ArrayList<>();
-
-        public Cliente() {
-        }
-
 		public Cliente(String nome, String cpf) {
 			this.nome = nome;
 			this.cpf = cpf;
@@ -34,7 +30,23 @@ public class Cliente {
 		public void setCpf(String cpf) {
 			this.cpf = cpf;
 		}
-        
-	}
+		
+		public List<Conta> getContas() {
+			return contas;
+		}
+		
+		
+		public void adicionarConta(Conta conta) {
+			   contas.add(conta);
+		}
+		
+		public void removerConta(Conta conta) {
+			  contas.remove(conta);
+		}
+		
+	
+
+		
+}
 
 

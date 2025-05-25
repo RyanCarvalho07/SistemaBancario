@@ -4,13 +4,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public  abstract class Conta {
+public abstract class Conta {
 
 	private Integer numero;
 	protected Double saldo;
 	private Cliente titular;
 
-	private List<Transacao> historico = new ArrayList<>();;
+	private List<Transacao> historico = new ArrayList<>();
 
 	public Conta() {
 	}

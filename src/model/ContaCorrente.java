@@ -4,10 +4,6 @@ public final class ContaCorrente extends Conta {
 
 	private static double TAXA_DE_OPERACAO = 0.005;
 
-	public ContaCorrente() {
-		super();
-	}
-
 	public ContaCorrente(Integer numero, Cliente titular) {
 		super(numero, titular);
 	}
@@ -36,7 +32,6 @@ public final class ContaCorrente extends Conta {
 			this.saldo -= valorTotal;
 			destino.depositar(valor);
 			registrarTransacao(valor, TipoTransacao.TRASFERENCIA, destino);
-			registrarTransacao(taxa, TipoTransacao.TARIFA, this);
 		}
 
 	}
