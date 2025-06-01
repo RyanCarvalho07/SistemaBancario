@@ -11,13 +11,16 @@ public class Transacao {
 	private Conta  origem;
 	private Conta  destino;
 
-	public Transacao(LocalDateTime dataHora, TipoTransacao tipo, Double valor) {
+	public Transacao(LocalDateTime dataHora, TipoTransacao tipo, Double valor, Conta origem, Conta destino) {
 		this.dataHora = dataHora;
 		this.tipo = tipo;
 		this.valor = valor;
+		this.origem = origem; 
+		this.destino = destino; 
 	}
 
-	
+
+
 	public Conta getContaOrigem() {
 		return origem;
 	}
@@ -50,5 +53,13 @@ public class Transacao {
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
+	
+    public Conta getOrigem() {
+    	return origem; 
+    }
+    
+    public Conta getDestino() {
+    	return destino;
+    }
 
 }
