@@ -14,14 +14,14 @@ public final class ContaCorrente extends Conta {
 		double valorTotal = valor + taxa;
 		if (this.getSaldo() >= valorTotal) {
 			this.setSaldo(this.getSaldo() - valorTotal);
-			registrarTransacao(valor, TipoTransacao.SAQUE, this);
+			registrarTransacao(valor, TipoTransacao.SAQUE, this, null);
 		}
 	}
 
 	@Override
 	public final void depositar(double valor) {
 		saldo += valor;
-		registrarTransacao(valor, TipoTransacao.DEPOSITO, this);
+		registrarTransacao(valor, TipoTransacao.DEPOSITO, null, this);
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public final class ContaCorrente extends Conta {
 		if (this.getSaldo() >= valorTotal) {
 			this.saldo -= valorTotal;
 			destino.depositar(valor);
-			registrarTransacao(valor, TipoTransacao.TRASFERENCIA, destino);
+			registrarTransacao(valor, TipoTransacao.TRASFERENCIA, this, destino);
 		}
 
 	}

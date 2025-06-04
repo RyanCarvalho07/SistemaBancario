@@ -20,7 +20,7 @@ public final class ContaPoupanca extends Conta {
 	public final void sacar(double valor) {
 		if (this.getSaldo() >= valor) {
 			this.setSaldo(this.getSaldo() - valor);
-			registrarTransacao(valor, TipoTransacao.SAQUE, this);
+			registrarTransacao(valor, TipoTransacao.SAQUE, this, null);
 		}
 
 	}
@@ -28,7 +28,7 @@ public final class ContaPoupanca extends Conta {
 	@Override
 	public final void depositar(double valor) {
 		this.saldo += valor;
-		registrarTransacao(valor, TipoTransacao.DEPOSITO, this);
+		registrarTransacao(valor, TipoTransacao.DEPOSITO, null, this);
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public final class ContaPoupanca extends Conta {
 		if (this.getSaldo() >= valor) {
 			this.saldo -= valor;
 			destino.depositar(valor);
-			registrarTransacao(valor, TipoTransacao.TRASFERENCIA, destino);
+			registrarTransacao(valor, TipoTransacao.TRASFERENCIA, this, destino);
 		}
 
 	}

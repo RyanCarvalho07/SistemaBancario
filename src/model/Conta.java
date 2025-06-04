@@ -49,8 +49,8 @@ public abstract class Conta {
 		this.saldo += valor;
 	}
 
-	protected void registrarTransacao(double valor, TipoTransacao tipo, Conta destino) {
-		historico.add(new Transacao(LocalDateTime.now(), tipo, valor, this, destino));
+	public  void registrarTransacao(double valor, TipoTransacao tipo, Conta origem, Conta destino) {
+		historico.add(new Transacao(LocalDateTime.now(), tipo, valor, origem, destino));
 	}
 
 	public abstract void sacar(double valor);
